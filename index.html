@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LOOP — Your campus. Your people.</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{color-scheme:dark;--bg:#0b0a13;--card:#151421;--line:#ffffff18;--muted:#aaa6bf;--purple:#b08aff;--pink:#ff73bd;--mint:#76f0d0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -10%,#342052 0,transparent 40%),var(--bg);color:#f8f6ff;font:15px system-ui,Segoe UI,Arial,sans-serif}.wrap{max-width:1180px;margin:auto;padding:20px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:24px}.brand{font-weight:950;font-size:26px;letter-spacing:3px;display:flex;align-items:center;gap:10px}.mark{display:grid;place-items:center;width:39px;height:39px;border-radius:14px;background:linear-gradient(130deg,var(--purple),var(--pink));color:#160e25}.campus{color:#d1c5e9;font-size:12px}.layout{display:grid;grid-template-columns:1fr 310px;gap:20px}.hero,.card{border:1px solid var(--line);background:linear-gradient(140deg,#211934,#151421);border-radius:22px;padding:23px;margin-bottom:18px}.eyebrow{font-size:10px;color:var(--mint);font-weight:850;letter-spacing:1.8px}.hero h1{font-size:clamp(30px,4vw,48px);line-height:1.05;letter-spacing:-1.7px;margin:13px 0}.gradient{background:linear-gradient(90deg,#c7a9ff,#ff7ac4);color:transparent;background-clip:text}.hero p{color:#c7c0d9;line-height:1.65;max-width:620px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:11px 15px;background:linear-gradient(100deg,var(--purple),var(--pink));color:#1b1025;font-weight:850;cursor:pointer}.btn.secondary{background:#ffffff0b;border:1px solid var(--line);color:white}.btn:disabled{opacity:.5;cursor:not-allowed}.google-btn{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px}.google-g{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#fff;color:#4285f4;font-weight:950;font-size:16px}input,textarea,select{width:100%;background:#0e0d17;color:white;border:1px solid var(--line);border-radius:11px;padding:12px;margin:5px 0 12px;outline:none}input:focus,textarea:focus,select:focus{border-color:var(--purple)}label{font-size:12px;color:#d6d0e5}h2{font-size:19px;margin:0 0 14px}h3{font-size:15px;margin:0 0 10px}.muted{color:var(--muted);font-size:12px;line-height:1.6}.profiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.person{background:var(--card);border:1px solid var(--line);border-radius:17px;overflow:hidden}.art{height:115px;display:grid;place-items:center;font-size:50px;background:linear-gradient(135deg,#4b316c,#b56e9b)}.person:nth-child(3n+2) .art{background:linear-gradient(135deg,#1f5262,#66b4b0)}.person:nth-child(3n) .art{background:linear-gradient(135deg,#34477d,#8c8fe2)}.info{padding:13px}.info strong{font-size:14px}.info p{font-size:12px;color:#c7c1d8;min-height:38px;line-height:1.5}.meta{font-size:11px;color:var(--muted);margin-top:5px}.pill{display:inline-block;background:#ffffff0c;border:1px solid var(--line);border-radius:99px;padding:5px 8px;font-size:10px;color:#d3c5f3}.person .btn{width:100%;margin-top:10px;padding:9px;font-size:11px}.stack{display:grid;gap:12px}.status{font-size:12px;padding:10px 12px;border-radius:11px;background:#ffffff08;border:1px solid var(--line);margin-bottom:15px;white-space:pre-wrap}.status.error{border-color:#ff737355;color:#ffb5b5}.hidden{display:none!important}.list-item{padding:12px 0;border-bottom:1px solid var(--line)}.list-item:last-child{border:0}.list-item strong{font-size:13px}.list-item p{font-size:12px;color:#d4cfe3;margin:7px 0;line-height:1.5}.chat-box{height:220px;overflow:auto;background:#0e0d17;border:1px solid var(--line);border-radius:13px;padding:12px;margin-bottom:10px}.bubble{max-width:88%;padding:9px 11px;border-radius:12px;background:#ffffff10;margin:7px 0;font-size:12px;overflow-wrap:anywhere}.bubble.mine{margin-left:auto;background:#8c64d9;color:white}.foot{color:#79758f;font-size:10px;line-height:1.6;margin:20px 0}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tabs button{border:1px solid var(--line);background:#ffffff08;color:#ccc5df;border-radius:99px;padding:8px 12px;cursor:pointer;font-size:11px}.tabs button.active{background:#9c72e533;border-color:#b08aff;color:white}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-grid>div{min-width:0}.userbar{display:flex;align-items:center;gap:10px}.avatar{width:35px;height:35px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(130deg,#a78aff,#ff75bf);font-size:17px}.right{position:sticky;top:20px;align-self:start}.rule{height:1px;background:var(--line);margin:14px 0}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.right{position:static}.profiles{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:480px){.wrap{padding:13px}.hero,.card{padding:17px}.profiles{grid-template-columns:1fr 1fr}.art{height:90px}.form-grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand"><span class="mark">↗</span> LOOP</div><div class="campus">VERITAS UNIVERSITY · BWARI, ABUJA</div><div id="userbar" class="userbar hidden"><span id="who" class="muted"></span><button id="logout" class="btn secondary">Log out</button></div></header>
+<div id="notice" class="status">Welcome to LOOP. Sign in with email or Google once authentication is configured.</div>
+<div id="auth" class="layout">
+<main><section class="hero"><div class="eyebrow">YOUR CAMPUS. YOUR PEOPLE.</div><h1>Uni life hits different<br>when you're <span class="gradient">in the loop.</span></h1><p>Meet people beyond your lecture hall. Find your circle, discover campus conversations, and make student life more connected.</p><span class="pill">First community: Veritas University</span></section>
+<section class="card"><h2>Create your account</h2><p class="muted">Use an email you control. Email confirmation may be required before you can sign in.</p><label>Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com"><label>Password (at least 8 characters)</label><input id="password" type="password" autocomplete="new-password" placeholder="Create a strong password"><div class="row"><button id="signup" class="btn">Create account</button><button id="signin" class="btn secondary">I already have an account</button></div><div class="rule"></div><button id="googleSignin" class="btn secondary google-btn" style="width:100%"><span class="google-g" aria-hidden="true">G</span> Continue with Google</button><p class="muted">By continuing, you agree to treat other students respectfully. Never post your password, private address, or sensitive information.</p></section></main>
+<aside class="right"><section class="card"><h3>What you'll get</h3><p class="muted">✦ A student profile<br><br>✦ Discover other members<br><br>✦ Send and accept connection requests<br><br>✦ Chat after a connection is accepted<br><br>✦ Report or block accounts</p><div class="rule"></div><p class="muted">This is a community prototype. Verify student status before treating accounts as campus-verified.</p></section></aside></div>
+<div id="app" class="hidden">
+<div class="layout"><main>
+<section id="profileSetup" class="card hidden"><h2>Set up your profile</h2><p class="muted">Only share information you're comfortable showing to signed-in members.</p><div class="form-grid"><div><label>Display name</label><input id="displayName" maxlength="40" placeholder="What should people call you?"></div><div><label>Level</label><select id="level"><option>Choose level</option><option>100 level</option><option>200 level</option><option>300 level</option><option>400 level</option><option>500 level</option><option>Postgraduate</option><option>Prefer not to say</option></select></div></div><label>Course / department</label><input id="course" maxlength="80" placeholder="e.g. Computer Science"><label>Bio</label><textarea id="bio" maxlength="220" rows="3" placeholder="Music, football, building things..."></textarea><label>Interests (comma-separated)</label><input id="interests" maxlength="120" placeholder="Music, tech, books"><button id="saveProfile" class="btn">Save profile</button></section>
+<section class="hero"><div class="eyebrow">YOUR CAMPUS. YOUR PEOPLE.</div><h1>Find your people.<br><span class="gradient">Start a conversation.</span></h1><p>Discover fellow students and build your circle, one hello at a time.</p><div class="row"><button class="btn" id="refresh">Refresh people ↻</button><button class="btn secondary" id="editProfile">Edit my profile</button></div></section>
+<div class="tabs"><button class="active" data-view="discover">Discover</button><button data-view="requests">Requests <span id="requestCount"></span></button><button data-view="connections">Connections & chat</button><button data-view="myprofile">My profile</button></div>
+<section id="view-discover"><h2>People in the loop ✨</h2><p class="muted">Profiles come from registered members. New communities grow when students invite friends.</p><div id="profiles" class="profiles"></div></section>
+<section id="view-requests" class="hidden card"><h2>Connection requests</h2><div id="requests"></div></section>
+<section id="view-connections" class="hidden card"><h2>Your connections</h2><div class="form-grid"><div><label>Choose a connection</label><select id="chatPartner"><option value="">Select a connection</option></select></div><div style="align-self:end"><button id="loadChat" class="btn">Open chat</button></div></div><div id="chatArea" class="hidden"><div id="chatBox" class="chat-box"></div><form id="sendForm"><label>Message</label><div class="row" style="flex-wrap:nowrap"><input id="messageText" maxlength="1500" placeholder="Write a respectful message…" required style="margin:0"><button class="btn" type="submit">Send</button></div></form></div><div id="connections"></div></section>
+<section id="view-myprofile" class="hidden card"><h2>Your profile</h2><div id="myProfileView"></div></section>
+</main>
+<aside class="right"><section class="card"><div class="eyebrow">CAMPUS COMMUNITY</div><h3 style="margin-top:10px">Help make LOOP welcoming.</h3><p class="muted">Be respectful. Don't pressure people to reply. Report harmful behavior, and block anyone who makes you uncomfortable.</p><div class="rule"></div><h3>Safety first</h3><p class="muted">Don't share financial details, passwords, private addresses, or live location. Meet new people only in safe public places and tell someone you trust.</p></section><section class="card"><h3>About this launch</h3><p class="muted">LOOP is an independent student community concept, not affiliated with Veritas University. Campus verification and moderation should be added before broad public launch.</p></section></aside></div></div>
+<p class="foot">LOOP MVP · Keep your account secure · Profiles are visible only to signed-in users under the database policies. If you encounter abuse, block and report the account.</p>
+</div>
+<script>
+const SUPABASE_URL = "https://vvpscrozukxllmwxcfkm.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_gee00u4-b1A15sk0dfIHdQ_dwwH4anf";
+let sb=null, user=null, myProfile=null, activeConnection=null, refreshTimer=null;
+const $=id=>document.getElementById(id);
+function notice(msg,error=false){$('notice').textContent=msg;$('notice').classList.toggle('error',error);$('notice').classList.remove('hidden')}
+function ready(){return !!window.supabase && !SUPABASE_URL.includes('PASTE_') && !SUPABASE_ANON_KEY.includes('PASTE_')}
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function initials(s=''){return [...s.trim()].slice(0,1).join('').toUpperCase()||'S'}
+function interests(p){return (p.interests||[]).slice(0,3).map(x=>`<span class="pill">${esc(x)}</span>`).join(' ')}
+async function init(){
+ if(!ready()){notice('Supabase setup is incomplete. Check the project URL and publishable key in index.html.',true);return}
+ const params=new URLSearchParams(window.location.search);
+ const authError=params.get('error_description')||params.get('error');
+ if(authError){notice('Sign-in did not complete: '+authError.replace(/\+/g,' '),true);history.replaceState({},document.title,window.location.pathname)}
+ sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{
+   auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}
+ });
+ sb.auth.onAuthStateChange((_event,session)=>{
+   setTimeout(async()=>{
+     user=session?.user||null;
+     if(user) await enterApp();
+     else showAuth();
+   },0);
+ });
+ const {data,error}=await sb.auth.getSession();
+ if(error){notice('Could not check your sign-in session: '+error.message,true);showAuth();return}
+ if(data.session){user=data.session.user;await enterApp()}else{showAuth()}
+}
+function showAuth(){$('auth').classList.remove('hidden');$('app').classList.add('hidden');$('userbar').classList.add('hidden')}
+async function enterApp(){
+ $('auth').classList.add('hidden');$('app').classList.remove('hidden');$('userbar').classList.remove('hidden');$('who').textContent=user.email||'Signed in';
+ await loadOwnProfile();
+}
+async function loadOwnProfile(){
+ const {data,error}=await sb.from('profiles').select('*').eq('id',user.id).maybeSingle();
+ if(error){notice('Could not load profile: '+error.message,true);return}
+ myProfile=data;
+ if(!myProfile){$('profileSetup').classList.remove('hidden');$('displayName').value=user.user_metadata?.display_name||user.user_metadata?.full_name||user.user_metadata?.name||user.email?.split('@')[0]||'';notice('Welcome! Complete your profile to start discovering students.');return}
+ $('profileSetup').classList.add('hidden');notice('You’re signed in. Real accounts and database are connected.');
+ await loadPeople();await loadRequests();await loadConnections();renderMine();
+}
+async function loadPeople(){
+ const {data:blocked}=await sb.from('blocks').select('blocked_id').eq('blocker_id',user.id);
+ const blockedIds=(blocked||[]).map(x=>x.blocked_id);
+ const {data:out}=await sb.from('connections').select('recipient_id').eq('requester_id',user.id);
+ const {data:inc}=await sb.from('connections').select('requester_id').eq('recipient_id',user.id);
+ const known=new Set([user.id,...blockedIds,...(out||[]).map(x=>x.recipient_id),...(inc||[]).map(x=>x.requester_id)]);
+ const {data,error}=await sb.from('profiles').select('id,display_name,level,course,bio,interests,university').order('created_at',{ascending:false}).limit(100);
+ if(error){notice('Could not load students: '+error.message,true);return}
+ const people=(data||[]).filter(p=>!known.has(p.id));
+ $('profiles').innerHTML=people.length?people.map(p=>`<article class="person"><div class="art">${esc(initials(p.display_name))}</div><div class="info"><strong>${esc(p.display_name)}</strong><div class="meta">${esc(p.level||'Student')} · ${esc(p.course||'Course not added')}</div><p>${esc(p.bio||'Ready to meet people in the community.')}</p><div>${interests(p)}</div><button class="btn" onclick="sendRequest('${p.id}','${esc(p.display_name).replace(/'/g,"&#39;")}')">＋ Connect</button><button class="btn secondary" onclick="reportUser('${p.id}')" style="margin-top:6px">Report profile</button><button class="btn secondary" onclick="blockUser('${p.id}')" style="margin-top:6px">Block</button></div></article>`).join(''):'<p class="muted">No new profiles yet. Invite a few classmates to create accounts.</p>';
+}
+async function sendRequest(id,name){
+ const {error}=await sb.from('connections').insert({requester_id:user.id,recipient_id:id,status:'pending'});
+ if(error){notice(error.code==='23505'?'You have already sent a request to this person.':error.message,true);return}
+ notice('Connection request sent to '+name+'.');await loadPeople();
+}
+async function loadRequests(){
+ const {data,error}=await sb.from('connections').select('id,requester_id,created_at,profiles!connections_requester_id_fkey(display_name,course,level)').eq('recipient_id',user.id).eq('status','pending').order('created_at',{ascending:false});
+ if(error){$('requests').textContent='Could not load requests: '+error.message;return}
+ $('requestCount').textContent=data.length?`(${data.length})`:'';
+ $('requests').innerHTML=data.length?data.map(r=>`<div class="list-item"><strong>${esc(r.profiles?.display_name||'Student')}</strong><div class="meta">${esc(r.profiles?.level||'')} · ${esc(r.profiles?.course||'')}</div><div class="row" style="margin-top:9px"><button class="btn" onclick="acceptRequest('${r.id}')">Accept</button><button class="btn secondary" onclick="declineRequest('${r.id}')">Decline</button><button class="btn secondary" onclick="reportUser('${r.requester_id}')">Report</button></div></div>`).join(''):'<p class="muted">No pending requests right now.</p>';
+}
+async function acceptRequest(id){const {error}=await sb.from('connections').update({status:'accepted'}).eq('id',id).eq('recipient_id',user.id);if(error){notice(error.message,true);return}notice('Connection accepted. You can now chat.');await loadRequests();await loadConnections();await loadPeople()}
+async function declineRequest(id){const {error}=await sb.from('connections').delete().eq('id',id).eq('recipient_id',user.id);if(error){notice(error.message,true);return}await loadRequests();notice('Request declined.')}
+async function loadConnections(){
+ const {data,error}=await sb.from('connections').select('id,requester_id,recipient_id,profiles_requester:profiles!connections_requester_id_fkey(id,display_name,course),profiles_recipient:profiles!connections_recipient_id_fkey(id,display_name,course)').eq('status','accepted').or(`requester_id.eq.${user.id},recipient_id.eq.${user.id}`);
+ if(error){$('connections').textContent='Could not load connections: '+error.message;return}
+ const list=(data||[]).map(c=>{const p=c.requester_id===user.id?c.profiles_recipient:c.profiles_requester;return {id:c.id,profile:p}}).filter(c=>c.profile);
+ $('chatPartner').innerHTML='<option value="">Select a connection</option>'+list.map(c=>`<option value="${c.id}">${esc(c.profile.display_name)}</option>`).join('');
+ $('connections').innerHTML=list.length?list.map(c=>`<div class="list-item"><strong>${esc(c.profile.display_name)}</strong><div class="meta">${esc(c.profile.course||'Student')}</div><button class="btn secondary" style="margin-top:8px" onclick="openConnection('${c.id}')">Message</button><button class="btn secondary" style="margin:8px 0 0 6px" onclick="blockUser('${c.profile.id}')">Block</button></div>`).join(''):'<p class="muted">Accepted connections will appear here. Chat is only available after both people agree to connect.</p>';
+}
+async function openConnection(id){activeConnection=id;$('chatPartner').value=id;$('chatArea').classList.remove('hidden');await loadMessages();document.querySelector('[data-view="connections"]').click()}
+async function loadMessages(){
+ if(!activeConnection)return;
+ const {data,error}=await sb.from('messages').select('id,sender_id,body,created_at').eq('connection_id',activeConnection).order('created_at',{ascending:true}).limit(100);
+ if(error){notice('Could not load messages: '+error.message,true);return}
+ $('chatBox').innerHTML=(data||[]).map(m=>`<div class="bubble ${m.sender_id===user.id?'mine':''}">${esc(m.body)}<div class="meta">${new Date(m.created_at).toLocaleString()}</div></div>`).join('')||'<p class="muted">Say hello. Be kind and keep personal information private.</p>';
+ $('chatBox').scrollTop=$('chatBox').scrollHeight;
+}
+$('sendForm').addEventListener('submit',async e=>{e.preventDefault();if(!activeConnection)return;const body=$('messageText').value.trim();if(!body)return;const {error}=await sb.from('messages').insert({connection_id:activeConnection,sender_id:user.id,body});if(error){notice('Message not sent: '+error.message,true);return}$('messageText').value='';await loadMessages()});
+async function saveProfile(){
+ const display_name=$('displayName').value.trim();if(display_name.length<2){notice('Please enter a display name with at least 2 characters.',true);return}
+ const interests=$('interests').value.split(',').map(s=>s.trim()).filter(Boolean).slice(0,8);
+ const row={id:user.id,display_name,level:$('level').value==='Choose level'?'':$('level').value,course:$('course').value.trim(),bio:$('bio').value.trim(),interests,university:'Veritas University, Bwari, Abuja'};
+ const {error}=await sb.from('profiles').upsert(row);
+ if(error){notice('Could not save profile: '+error.message,true);return}
+ notice('Profile saved. Welcome to LOOP!');await loadOwnProfile()
+}
+$('saveProfile').addEventListener('click',saveProfile);
+$('editProfile').addEventListener('click',()=>{$('profileSetup').classList.remove('hidden');$('displayName').value=myProfile?.display_name||'';$('level').value=myProfile?.level||'Choose level';$('course').value=myProfile?.course||'';$('bio').value=myProfile?.bio||'';$('interests').value=(myProfile?.interests||[]).join(', ');$('profileSetup').scrollIntoView({behavior:'smooth'})});
+function renderMine(){if(!myProfile)return;$('myProfileView').innerHTML=`<div class="avatar">${esc(initials(myProfile.display_name))}</div><h3 style="margin-top:12px">${esc(myProfile.display_name)}</h3><p class="muted">${esc(myProfile.university||'')} · ${esc(myProfile.level||'')} · ${esc(myProfile.course||'')}</p><p>${esc(myProfile.bio||'')}</p><div>${interests(myProfile)}</div><button class="btn secondary" style="margin-top:15px" onclick="$('editProfile').click()">Edit profile</button>`}
+async function reportUser(id){const reason=prompt('Briefly describe the issue (for example: harassment, impersonation, spam). Do not include sensitive details.');if(!reason)return;const {error}=await sb.from('reports').insert({reporter_id:user.id,reported_user_id:id,reason:reason.slice(0,500)});if(error){notice('Report could not be submitted: '+error.message,true);return}notice('Report submitted. In this MVP, a trusted moderator must review it.')}
+async function blockUser(id){if(!confirm('Block this account? They should no longer be able to connect or message you.'))return;const {error}=await sb.from('blocks').insert({blocker_id:user.id,blocked_id:id});if(error){notice('Could not block account: '+error.message,true);return}notice('Account blocked. Refreshing discovery.');await loadPeople();await loadConnections()}
+$('refresh').addEventListener('click',async()=>{await loadPeople();await loadRequests();await loadConnections();notice('Updated.')});
+$('loadChat').addEventListener('click',async()=>{const id=$('chatPartner').value;if(!id){notice('Choose a connection first.',true);return}await openConnection(id)});
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x===b));['discover','requests','connections','myprofile'].forEach(v=>$('view-'+v).classList.toggle('hidden',v!==b.dataset.view))}));
+$('signup').addEventListener('click',async()=>{if(!ready()){notice('Set up Supabase first; see README.md.',true);return}const email=$('email').value.trim(),password=$('password').value;if(password.length<8){notice('Use a password of at least 8 characters.',true);return}const {data,error}=await sb.auth.signUp({email,password});if(error){notice(error.message,true);return}if(!data.session){notice('Account created. Check your email to confirm, then sign in.')}else{user=data.user;await enterApp()}});
+$('signin').addEventListener('click',async()=>{
+ if(!ready()||!sb){notice('Supabase is not initialized. Refresh the page and try again.',true);return}
+ const email=$('email').value.trim(),password=$('password').value;
+ if(!email||!password){notice('Enter your email and password first.',true);return}
+ const {data,error}=await sb.auth.signInWithPassword({email,password});
+ if(error){notice(error.message+' If you just registered, check your email for a confirmation link.',true);return}
+ user=data.user;await enterApp()
+});
+ $('googleSignin').addEventListener('click',async()=>{
+  if(!ready()||!sb){notice('Supabase is not initialized. Refresh the page and try again.',true);return}
+  if(location.protocol==='file:'){notice('Google sign-in cannot complete from a file opened directly on your computer. Publish LOOP to a website first, then add that exact website URL to Supabase Authentication → URL Configuration.',true);return}
+  const redirectTo=window.location.origin+window.location.pathname;
+  $('googleSignin').disabled=true;
+  $('googleSignin').textContent='Connecting to Google…';
+  const {error}=await sb.auth.signInWithOAuth({
+    provider:'google',
+    options:{redirectTo,queryParams:{prompt:'select_account'}}
+  });
+  if(error){
+    notice('Google sign-in could not start: '+error.message+'. Check that Google is enabled under Supabase Authentication → Sign In / Providers.',true);
+    $('googleSignin').disabled=false;
+    $('googleSignin').innerHTML='<span class="google-g" aria-hidden="true">G</span> Continue with Google';
+  }
+ });
+$('logout').addEventListener('click',async()=>{await sb.auth.signOut();user=null;myProfile=null;showAuth();notice('You have signed out.')});
+init();
+</script>
+</body>
+</html>
